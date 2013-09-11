@@ -1,14 +1,18 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.servicos;
 
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -35,33 +39,16 @@ public class MergePdfTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of Execute method, of class MergePdf.
-     */
+
     @Test
     public void testExecute() {
         System.out.println("Execute");
+        String[] args = null;
         MergePdf instance = new MergePdf();
-        instance.Execute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.Execute(args);
     }
 
-    /**
-     * Test of AbortExecute method, of class MergePdf.
-     */
-    @Test
-    public void testAbortExecute() {
-        System.out.println("AbortExecute");
-        MergePdf instance = new MergePdf();
-        instance.AbortExecute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
 
-    /**
-     * Test of Merge method, of class MergePdf.
-     */
     @Test
     public void testMerge() {
         System.out.println("Merge");
@@ -69,7 +56,6 @@ public class MergePdfTest {
         String path = "";
         MergePdf instance = new MergePdf();
         instance.Merge(pdfs, path);
-        // TODO review the generated test code and remove the default call to fail.
     }
 
     /**
@@ -82,6 +68,5 @@ public class MergePdfTest {
         OutputStream outputStream = null;
         boolean paginate = false;
         MergePdf.concatPDFs(streamOfPDFFiles, outputStream, paginate);
-        // TODO review the generated test code and remove the default call to fail.
     }
 }

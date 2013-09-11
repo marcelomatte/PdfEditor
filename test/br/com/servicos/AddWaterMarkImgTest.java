@@ -1,25 +1,61 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.servicos;
 
-import static org.junit.Assert.*;
-
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+/**
+ *
+ * @author Tiago
+ */
 public class AddWaterMarkImgTest {
+    
+    public AddWaterMarkImgTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
 
-	@Test
-	public void testAddWaterMarkImg() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testSetWaterMarkImg() {
-		System.out.println("SetWaterMarkImg");
-        String path1 = "";
-        String path2 = "";
+    @Test
+    public void testExecute() {
+        System.out.println("Execute");
+        String[] args = null;
+        AddWaterMarkImg instance = new AddWaterMarkImg();
+        instance.Execute(args);
+
+    }
+
+    /**
+     * Test of SetWaterMarkImg method, of class AddWaterMarkImg.
+     */
+    @Test
+    public void testSetWaterMarkImg() {
+        System.out.println("SetWaterMarkImg");
+        String origem = "";
+        String destino = "";
         String imagem = "";
         AddWaterMarkImg instance = new AddWaterMarkImg();
-        instance.SetWaterMarkImg(path1, path2, imagem);
-        // TODO review the generated test code and remove the default call to fail.
-	}
+        instance.SetWaterMarkImg(origem, destino, imagem);
 
+    }
 }

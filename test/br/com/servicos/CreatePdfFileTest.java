@@ -1,42 +1,57 @@
+
 package br.com.servicos;
 
-import static org.junit.Assert.*;
-
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
-import com.itextpdf.text.Document;
-
+/**
+ *
+ * @author Tiago
+ */
 public class CreatePdfFileTest {
+    
+    public CreatePdfFileTest() {
+    }
+    
+    @BeforeClass
+    public static void setUpClass() {
+    }
+    
+    @AfterClass
+    public static void tearDownClass() {
+    }
+    
+    @Before
+    public void setUp() {
+    }
+    
+    @After
+    public void tearDown() {
+    }
 
-	@Test
-	public void testCreatePdfFile() {
-		fail("Not yet implemented");
-	}
 
-	@Test
-	public void testExecute() {
-		fail("Not yet implemented");
-	}
+    @Test
+    public void testExecute() {
+        System.out.println("Execute");
+        String[] args = null;
+        CreatePdfFile instance = new CreatePdfFile();
+        instance.Execute(args);
+    }
 
-	@Test
-	public void testAbortExecute() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testCreatePdf(){ 
-		System.out.println("CreatePdf");
+    @Test
+    public void testCreatePdf() {
+        System.out.println("CreatePdf");
         String text = "";
         String nome = "";
+        String path = "";
         float leftMargin = 0.0F;
         float rightMargin = 0.0F;
         float topMargin = 0.0F;
         float bottomMargin = 0.0F;
         CreatePdfFile instance = new CreatePdfFile();
-        Document expResult = null;
-        Document result = instance.CreatePdf(text, nome, leftMargin, rightMargin, topMargin, bottomMargin);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-	}
-
+        instance.CreatePdf(text, nome, path, leftMargin, rightMargin, topMargin, bottomMargin);
+    }
 }

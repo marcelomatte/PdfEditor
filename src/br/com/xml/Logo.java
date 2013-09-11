@@ -2,31 +2,29 @@ package br.com.xml;
 
 import java.io.Serializable;
 
-public class Marca implements Serializable {
+public class Logo implements Serializable {
 
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
-	private String info;
 	
-	public Marca() {
+	private Marca marca;
+	
+	public Logo() {
+		this.marca = new Marca();
 	}
 
-	public String getInfo() {
-		return info;
+	public Marca getMarca() {
+		return marca;
 	}
 
-	public void setInfo(String info) {
-		this.info = info;
+	public void setMarca(Marca marca) {
+		this.marca = marca;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((info == null) ? 0 : info.hashCode());
+		result = prime * result + ((marca == null) ? 0 : marca.hashCode());
 		return result;
 	}
 
@@ -38,14 +36,14 @@ public class Marca implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Marca other = (Marca) obj;
-		if (info == null) {
-			if (other.info != null)
+		Logo other = (Logo) obj;
+		if (marca == null) {
+			if (other.marca != null)
 				return false;
-		} else if (!info.equals(other.info))
+		} else if (!marca.equals(other.marca))
 			return false;
 		return true;
 	}
-	
+
 	
 }

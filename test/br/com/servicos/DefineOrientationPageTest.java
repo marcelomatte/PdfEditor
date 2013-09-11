@@ -1,3 +1,4 @@
+
 package br.com.servicos;
 
 import org.junit.After;
@@ -5,7 +6,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -32,28 +32,12 @@ public class DefineOrientationPageTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of Execute method, of class DefineOrientationPage.
-     */
     @Test
     public void testExecute() {
         System.out.println("Execute");
+        String[] args = null;
         DefineOrientationPage instance = new DefineOrientationPage();
-        instance.Execute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of AbortExecute method, of class DefineOrientationPage.
-     */
-    @Test
-    public void testAbortExecute() {
-        System.out.println("AbortExecute");
-        DefineOrientationPage instance = new DefineOrientationPage();
-        instance.AbortExecute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.Execute(args);
     }
 
     /**
@@ -62,21 +46,10 @@ public class DefineOrientationPageTest {
     @Test
     public void testSetOrientation() {
         System.out.println("SetOrientation");
-        DefineOrientationPage instance = new DefineOrientationPage();
-        instance.SetOrientation();
-        // TODO review the generated test code and remove the default call to fail.
-    }
-
-    /**
-     * Test of manipulatePdf method, of class DefineOrientationPage.
-     */
-    @Test
-    public void testManipulatePdf() {
-        System.out.println("manipulatePdf");
         String src = "";
         String dest = "";
+        int page = 0;
         DefineOrientationPage instance = new DefineOrientationPage();
-        instance.manipulatePdf(src, dest);
-        // TODO review the generated test code and remove the default call to fail.
+        instance.SetOrientation(src, dest, page);
     }
 }

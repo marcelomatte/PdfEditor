@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.servicos;
 
 import org.junit.After;
@@ -14,9 +11,9 @@ import org.junit.Test;
  *
  * @author Tiago
  */
-public class SlpitPdfTest {
+public class AddWaterMarkXmlTest {
     
-    public SlpitPdfTest() {
+    public AddWaterMarkXmlTest() {
     }
     
     @BeforeClass
@@ -35,26 +32,22 @@ public class SlpitPdfTest {
     public void tearDown() {
     }
 
-
     @Test
     public void testExecute() {
         System.out.println("Execute");
         String[] args = null;
-        SlpitPdf instance = new SlpitPdf();
+        AddWaterMarkXml instance = new AddWaterMarkXml();
         instance.Execute(args);
     }
 
-    /**
-     * Test of DividePdf method, of class SlpitPdf.
-     */
+
     @Test
-    public void testDividePdf() {
-        System.out.println("DividePdf");
+    public void testSetWaterMarkXml() {
+        System.out.println("SetWaterMarkXml");
         String src = "";
         String dest = "";
-        int pi = 0;
-        int pf = 0;
-        SlpitPdf instance = new SlpitPdf();
-        instance.DividePdf(src, dest, pi, pf);
+        String xml = "";
+        AddWaterMarkXml instance = new AddWaterMarkXml();
+        instance.SetWaterMarkXml(src, dest, xml);
     }
 }

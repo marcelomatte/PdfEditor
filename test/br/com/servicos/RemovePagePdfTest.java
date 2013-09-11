@@ -1,3 +1,4 @@
+
 package br.com.servicos;
 
 import org.junit.After;
@@ -5,7 +6,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -32,37 +32,23 @@ public class RemovePagePdfTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of Execute method, of class RemovePagePdf.
-     */
+
     @Test
     public void testExecute() {
         System.out.println("Execute");
+        String[] args = null;
         RemovePagePdf instance = new RemovePagePdf();
-        instance.Execute();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.Execute(args);
     }
 
-    /**
-     * Test of AbortExecute method, of class RemovePagePdf.
-     */
-    @Test
-    public void testAbortExecute() {
-        System.out.println("AbortExecute");
-        RemovePagePdf instance = new RemovePagePdf();
-        instance.AbortExecute();
-        // TODO review the generated test code and remove the default call to fail.
-    }
 
-    /**
-     * Test of DelPagePdf method, of class RemovePagePdf.
-     */
     @Test
     public void testDelPagePdf() {
         System.out.println("DelPagePdf");
+        String src = "";
+        String dest = "";
+        int page = 0;
         RemovePagePdf instance = new RemovePagePdf();
-        instance.DelPagePdf();
-        // TODO review the generated test code and remove the default call to fail.
+        instance.DelPagePdf(src, dest, page);
     }
 }

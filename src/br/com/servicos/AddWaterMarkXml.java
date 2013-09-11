@@ -1,67 +1,85 @@
 package br.com.servicos;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.apache.commons.digester3.Digester;
-import org.xml.sax.SAXException;
+import java.io.FileOutputStream;
+import java.util.logging.FileHandler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
 
 import br.com.interfaces.IServiceStrategy;
-import br.com.xml.Hierarquia;
-import br.com.xml.Marca;
+
+import com.itextpdf.text.BaseColor;
+import com.itextpdf.text.Element;
+import com.itextpdf.text.pdf.BaseFont;
+import com.itextpdf.text.pdf.PdfContentByte;
+import com.itextpdf.text.pdf.PdfGState;
+import com.itextpdf.text.pdf.PdfReader;
+import com.itextpdf.text.pdf.PdfStamper;
 
 public class AddWaterMarkXml implements IServiceStrategy {
 
 	@Override
-	public void Execute() {
+	public void Execute(String[] args) {
 		
-	}
-
-	@Override
-	public void AbortExecute() {
+		String origem = args[1];
+		String destino = args[2];
+		String marca = args[3];
+		SetWaterMarkXml(origem, destino, marca);
 		
 	}
 	
+
 	public AddWaterMarkXml() {
 
 	}
-	
-	public void SetWaterMarkXml(String path){
-		String res="";
-		// TODO Auto-generated method stub
-		Digester digester = new Digester();
 
+	public void SetWaterMarkXml(String src, String dest, String xml) {
 		
-		digester.setValidating(false);
-
+		Logger logAddWaterMarkXml = Logger.getLogger(AddWaterMarkXml.class.getName());
+		FileHandler fh = null;
 		
-		digester.addObjectCreate("hierarquia", "xml.Hierarquia");
-		digester.addSetProperties("hierarquia");
-		//digester.addSetNext("hierarquia", "addHierarquia");
-		
-		digester.addObjectCreate("hierarquia/marca", Marca.class);
-		digester.addSetNext("hierarquia/marca", "addMarca");
-		digester.addBeanPropertySetter("hierarquia/marca/nome", "nome");
-		
-		// specifies the xml file
-		//File input = new File("./src/xml/marcaDagua.xml");
-		File input = new File(path);
+		BaseFont font;
+		PdfGState graphicState;
+		BaseColor color;
 
 		try {
-			// parse the xml file. The hierarchy's root node
-			// is returned by the parse method
-			Hierarquia hierarquia = (Hierarquia) digester.parse(input);
-			//System.out.println(hierarquia);
-			res= hierarquia.toString();
-			
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (SAXException e) {
-			e.printStackTrace();
+			fh = new FileHandler("c:\\pdf\\logs\\addWaterMarkXml.txt",true);
+			SimpleFormatter formatter = new SimpleFormatter();
+			fh.setFormatter(formatter);
+			logAddWaterMarkXml.addHandler(fh);
+			logAddWaterMarkXml.setLevel(Level.CONFIG);
+			PdfReader read = new PdfReader(src);
+			int numeroDePaginas = read.getNumberOfPages();
+			PdfStamper stamper = new PdfStamper(read,
+					new FileOutputStream(dest));
+			int i = 0;
+			PdfContentByte contByte;
+			font = BaseFont.createFont(BaseFont.COURIER_BOLD, BaseFont.WINANSI,
+					BaseFont.NOT_EMBEDDED);
+			graphicState = new PdfGState();
+			graphicState.setFillOpacity(0.3f);
+			graphicState.setStrokeOpacity(0.3f);
+			color = BaseColor.RED;
+
+			while (i < numeroDePaginas) {
+				i++;
+				contByte = stamper.getUnderContent(i);
+				contByte.saveState();
+				contByte.setGState(graphicState);
+				contByte.setColorFill(color);
+				contByte.beginText();
+				contByte.setFontAndSize(font, 40);
+				contByte.showTextAligned(Element.ALIGN_CENTER, xml, read
+						.getPageSize(i).getHeight() / 2, read.getPageSize(i)
+						.getWidth() / 2, 90);
+				contByte.endText();
+				contByte.restoreState();
+			}
+			stamper.close();
+		} catch (Exception e) {
+			logAddWaterMarkXml.log(Level.SEVERE, "Erro de I/O. O arquivo pdf de entrada ou de saída não foi encontrado. \n Ou você não tem permissão para gravá-lo.\n "+e.getMessage()+"\n"+e.getClass().getCanonicalName()+"\n");
 		}
 
 	}
-	
-	
 
 }

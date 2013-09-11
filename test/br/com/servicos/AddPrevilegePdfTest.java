@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.servicos;
 
 import org.junit.After;
@@ -14,9 +11,9 @@ import org.junit.Test;
  *
  * @author Tiago
  */
-public class SlpitPdfTest {
+public class AddPrevilegePdfTest {
     
-    public SlpitPdfTest() {
+    public AddPrevilegePdfTest() {
     }
     
     @BeforeClass
@@ -40,21 +37,22 @@ public class SlpitPdfTest {
     public void testExecute() {
         System.out.println("Execute");
         String[] args = null;
-        SlpitPdf instance = new SlpitPdf();
+        AddPrevilegePdf instance = new AddPrevilegePdf();
         instance.Execute(args);
+
     }
 
-    /**
-     * Test of DividePdf method, of class SlpitPdf.
-     */
+
+
     @Test
-    public void testDividePdf() {
-        System.out.println("DividePdf");
+    public void testEncryptPdf() {
+        System.out.println("encryptPdf");
+        String user = "";
+        String senha = "";
         String src = "";
         String dest = "";
-        int pi = 0;
-        int pf = 0;
-        SlpitPdf instance = new SlpitPdf();
-        instance.DividePdf(src, dest, pi, pf);
+        AddPrevilegePdf instance = new AddPrevilegePdf();
+        instance.encryptPdf(user, senha, src, dest);
+
     }
 }
